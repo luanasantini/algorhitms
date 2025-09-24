@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Dados & Algoritmos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Estruturas de Dados & Complexidade de Algoritmos </h1>
+        <p class="subtitle">Um guia sobre conceitos de programação</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#vetores">Vetores</a></li>
+            <li><a href="#matrizes">Matrizes</a></li>
+            <li><a href="#ponteiros">Ponteiros</a></li>
+            <li><a href="#recursao">Funções Recursivas</a></li>
+            <li><a href="#bigo">Notação Big O</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="Vetores" class="topic">
+            <h2>✨ Vetores</h2>
+            <p>Vetores são estruturas de dados que armazenam uma sequência de elementos do mesmo tipo em posições
+                consecutivas de memória.
+                <br>
+            <div class="split-content">
+                <div class="content-left">
+                    <h3 class="content-title">Características Principais:</h3>
+                    - Estrutura de dados mais básica e fundamental na programação<br>
+                    - Cada elemento é acessado por um índice (começando do zero)<br>
+                    - O tamanho do vetor é fixo (em linguagens como C) ou dinâmico (em Python)<br>
+                    - Os elementos são armazenados lado a lado na memória, o que permite acesso rápido
+
+                </div>
+                <div class="content-right">
+                    <h3 class="content-title">Principais Usos:</h3>
+                    - Implementar listas e armazenar dados em sequência (como notas, nomes, temperaturas) <br>
+                    - Processamento de dados em lote<br>
+                    - Manipulação de conjuntos de valores relacionados<br>
+                    - Realizar buscas, ordenações e operações matemáticas<br>
+                    - Base para estruturas mais complexas como matrizes, filas e pilhas
+
+                </div>
+            </div>
+            </p>
+
+            <div class="code-examples">
+                <div class="code-block">
+                    <h3>Exemplo em C</h3>
+                    <pre><code>
+#include &lt;stdio.h>
+
+int main() {
+    float notas[5] = {10, 8.5, 9.5, 9, 10};
+    
+    printf("Minhas notas desse semestre foram:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("%.1f, ", notas[i]);
+    }
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Exemplo em Python</h3>
+                    <pre><code>
+notas = [10, 8.5, 9.5, 9, 10]
+
+print("Minhas notas desse semestre foram:")
+for elemento in notas:
+    print(elemento, end=", ")
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="matrizes" class="topic">
+            <h2>✨ Matrizes</h2>
+            <p>Uma matriz é uma estrutura de dados que representa uma coleção bidimensional de elementos — ou seja, uma
+                tabela com linhas e colunas. Ela é como um vetor de vetores: cada linha é um vetor, e cada elemento
+                dentro da linha é acessado por um índice de coluna.<br>
+            <div class="split-content">
+                <div class="content-left">
+                    <h3 class="content-title">Características Principais:</h3>
+                    - Armazena dados do mesmo tipo<br>
+                    - Os elementos são acessados por dois índices: linha e coluna<br>
+                    - Pode ser fixa (como em C) ou dinâmica (como em Python)<br>
+                    - Organização bidimensional dos dados<br>
+                    - O armazenamento em memória contígua depende da linguagem<br>
+                </div>
+                <div class="content-right">
+                    <h3 class="content-title">Principais Usos:</h3>
+                    - Processamento de imagens digitais (matrizes de pixel)<br>
+                    - Representação de grades e mapas<br>
+                    - Sitemas matemáticos e álgebra linear<br>
+                    - Jogos (tabuleiros, mapas de tile, ambientações 3D)<br>
+                    - Representação e análise de dados tabulares (planilhas, banco de dados)
+
+                </div>
+            </div>
+            </p>
+
+            <div class="code-examples">
+                <div class="code-block">
+                    <h3>Exemplo em C</h3>
+                    <pre><code>
+#include &lt;stdio.h>
+
+int main() {
+    float notas[3][3] = {
+        {8.5, 10, 9},  // Semestre 1
+        {9, 8.5, 9},  // Semestre 2
+        {9.5, 10, 8.5}   // Semestre 3
+    };
+    
+    printf("Minhas notas nos últimos 3 semestres foram:\n");  
+    
+    for(int i = 0; i < 3; i++) {
+        float soma = 0;
+        for(int j = 0; j < 3; j++) {
+            soma += notas[i][j];
+        }
+        float media = soma / 3;
+        printf("Semestre %d - Média: %.2f\n", i + 1, media);
+    }
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Exemplo em Python</h3>
+                    <pre><code>
+notas = [
+    [8.5, 10, 9],     # Semestre 1
+    [9, 8.5, 9],      # Semestre 2
+    [9.5, 10, 8.5]    # Semestre 3
+]
+
+print("Minhas notas nos últimos 3 semestres foram:")
+
+for i in range(3):
+    soma = 0
+    for j in range(3):
+        soma += notas[i][j]
+    media = soma / 3
+    print(f"Semestre {i + 1} - Média: {media:.2f}")
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="ponteiros" class="topic">
+            <h2>✨ Ponteiros</h2>
+            <p>Um ponteiro é uma variável que armazena o endereço de memória de outra variável. Ou seja, em vez de
+                guardar um valor diretamente, ele aponta para onde esse valor está guardado na memória.
+                <br>
+            <div class="split-content">
+                <div class="content-left">
+                    <h3 class="content-title">Características Principais:</h3>
+                    - Cada ponteiro aponta para um tipo especifico (ex: int*, char*)<br>
+                    - Permitem acessar indiretamente ou modificar o valor da variável apontada<br>
+                    - Podem ser incrementados/decrementados (apontar para o próximo elemento ou para o anterior) <br>
+                    - Podem ser nulos (NULL em C)<br>
+                    - Fundamentais em C/C++
+                </div>
+                <div class="content-right">
+                    <h3 class="content-title">Principais Usos:</h3>
+                    - Alocação dinâmica de memória (ex: criar vetores ou matrizes em tempo de execução).<br>
+                    - Passagem por referência em funções (evita cópia de dados grandes)<br>
+                    - Criação de estruturas de dados (listas, pilhas, filas, arvores)<br>
+                    - Manipulação eficiente de arrays e strings em baixo nível<br>
+                    - Gerenciamento de recursos de hardware (ex: endereços fisicos)
+                </div>
+            </div>
+            </p>
+
+            <div class="code-examples">
+                <div class="code-block">
+                    <h3>Exemplo em C</h3>
+                    <pre><code>
+#include &lt;stdio.h>
+
+int main() {
+    int numero = 13;
+    int *ponteiro = &amp;numero;
+
+    
+    printf("Valor: %d\n", numero);
+    printf("Endereço: %p\n", ponteiro);
+    printf("Valor via ponteiro: %d\n", *ponteiro);
+    
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Exemplo em Python</h3>
+                    <pre><code>
+numero = 13
+referencia = numero
+
+print(f"Valor: {numero}")
+print(f"ID do objeto: {id(numero)}")
+print(f"Valor via referência: {referencia}")<br>
+                    </code></pre>
+
+                    <br>Obs.: Python não tem ponteiros diretos, porém a linguagem trabalha com referências de objetos, o
+                    que permite simular o comportamento de ponteiros em muitos casos (se você modifica o conteúdo, todas
+                    as variáveis que apontam para o mesmo objeto verão a mudança).
+                </div>
+            </div>
+        </section>
+
+        <section id="recursao" class="topic">
+            <h2>✨ Funções Recursivas</h2>
+            <p>Uma função recursiva é uma função que chama a si mesma dentro de sua própria definição, com o objetivo de
+                resolver um problema dividindo-o em partes menores.
+                <br>
+            <div class="split-content">
+                <div class="content-left">
+                    <h3 class="content-title">Características Principais:</h3>
+                    - Função que chama a si mesma com um novo parâmetro<br>
+                    - Precisa de um caso base (condição que interrompe a recursão, evitando chamadas infinitas)<br>
+                    - Cada chamada trata uma parte menor do problema original<br>
+                    - Pode ter múltiplas chamadas recursivas<br>
+                </div>
+                <div class="content-right">
+                    <h3 class="content-title">Principais Usos:</h3>
+                    - Algoritmos de busca como quicksort e mergesort<br>
+                    - Cálculo de sequências matemáticas (fatorial, fibonacci, exponenciação)<br>
+                    - Percurso em estruturas hierárquicas (árvores, grafos, listas ligadas)<br>
+                    - Problemas combinatórios como permutaões, combinações, backtracking
+
+                </div>
+            </div>
+            </p>
+
+            <div class="recursion-theory">
+                <h3>★ 3 leis básicas da recursão</h3>
+                <ol>
+                    <li>Um algoritmo recursivo deve ter um caso básico (caso base) que determina quando a recursão deve
+                        parar</li>
+                    <li>Um algoritmo recursivo deve mudar seu estado e se aproximar do caso básico a cada chamada
+                        recursiva</li>
+                    <li>Um algoritmo recursivo deve chamar a si mesmo recursivamente</li>
+                </ol>
+
+                <h3>★ Classificação das funções recursivas</h3>
+                <ul>
+                    <li><strong>Recursão Direta:</strong> A função chama ela mesma</li>
+                    <li><strong>Recursão Indireta:</strong> A primeira função chama a segunda função, que chama
+                        novamente a primeira função</li>
+                    <li><strong>Recursão Linear:</strong> Apenas uma chamada recursiva por execução</li>
+                    <li><strong>Recursão Múltipla:</strong> Faz mais de uma chamada recursiva por execução</li>
+                    <li><strong>Recursão Aninhada:</strong> A chamada recursiva está dentro de outra chamada recursiva
+                    </li>
+                    <li><strong>Recursão Mutual:</strong> Duas ou mais funções se chamam mutuamente</li>
+                </ul>
+
+                <p class="note">🌸 Observação: A recursão usa uma estrutura de dados embutida. Cada vez que a função é
+                    chamada, uma nova cópia das variáveis locais e dos parâmetros é criada separadamente.</p>
+            </div>
+
+            <div class="code-examples">
+                <div class="code-block">
+                    <h3>Exemplo em C</h3>
+                    <pre><code>
+#include &lt;stdio.h>
+
+int fatorial(int n) {
+    if(n == 0 || n == 1)
+        return 1;
+    else
+        return n * fatorial(n - 1);
+}
+
+int main() {
+    printf("%d\n", fatorial(5));
+    return 0;
+}
+                    </code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Exemplo em Python</h3>
+                    <pre><code>
+def fatorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fatorial(n - 1)
+
+print(fatorial(5))
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="bigo" class="topic">
+            <h2>✨ Notação Big O</h2>
+            <p>A notação Big O é uma função matematica utilizada na computação para analisar o desempenho ou
+                complexidade de um algoritmo de acordo com o tamanho da entrada. Essa notação mede o desempenho do
+                limite superior. Quanto mais aumentar a complexidade de um algoritmo, menos ele será eficiente. </p>
+            <br>
+            <div class="complexity-types">
+                <div class="complexity">
+                    <h3>🌸 O(1) - Tempo Constante</h3>
+                    <p>O algoritmo sempre executa no mesmo tempo, independente do tamanho da entrada, ou seja, não há
+                        dependência no tamanho da entrada, e a função exigirá apenas uma etapa de execução.<br><br>
+                        Exemplo: Acessar <strong>um elemento</strong> em um array por índice (independente do tamanho do
+                        array).</p>
+                </div>
+                <div class="complexity">
+                    <h3>🌸 O(log n) - Tempo Logarítmico</h3>
+                    <p>O tempo de execução aumenta logaritmicamente com o tamanho da entrada. Isso ocorre em funções que
+                        a quantidade dos dados de entrada diminui a cada etapa - ou seja, o número de operações não é o
+                        mesmo que o tamanho da entrada.<br><br>
+                        Exemplo: Busca binária em um array ordenado (a cada iteração, o array é dividido em 2).</p>
+                </div>
+                <div class="complexity">
+                    <h3>🌸 O(n) - Tempo Linear</h3>
+                    <p>O tempo de execução aumenta linearmente com o tamanho da entrada. O n especifica o número de
+                        vezes que a função será executada.<br><br>
+                        Exemplo: <strong>Percorrer</strong> todos os elementos de um array. Se o array tiver 500 itens,
+                        o tempo será O(500)</p>
+                </div>
+
+
+
+                <div class="complexity">
+                    <h3>🌸 O(n log n) - Tempo Log-Linear</h3>
+                    <p>O tempo de execução aumenta logaritmicamente de acordo com o processamento de cada elemento. O
+                        tempo cresce mais rápido que logaritmico, mas bem mais lento que quadrático.<br><br>
+                        Exemplo: Algoritmos eficientes de ordenação como Merge Sort, Quick Sort.</p>
+                </div>
+
+                <div class="complexity">
+                    <h3>🌸 O(n²) - Tempo Quadrático</h3>
+                    <p>O tempo de execução cresce proporcionamentel ao quadrado do tamanho da entrada (o algoritmo pode
+                        fazer até n x n operações).<br><br>
+                        Exemplo: Algoritmos que comparam cada elemento com todos os outros, como Bubble Sort e loops
+                        aninhados simples.</p>
+                </div>
+
+                <div class="complexity">
+                    <h3>🌸 O(n³) - Tempo Cúbico</h3>
+                    <p>O tempo de execução cresce proporcionamentel ao cubo do tamanho da entrada (o algoritmo pode
+                        fazer até n x n x n operações)<br><br>
+                        Exemplo: Multiplicação ingênua de matrizes, 3 níveis de loops aninhados.</p>
+                </div>
+
+                <div class="complexity">
+                    <h3>🌸 O(2ⁿ) - Tempo Exponencial</h3>
+                    <p>O tempo de execução <strong>dobra</strong> toda vez que o conjunto de dados de entrada é
+                        adicionado.<br><br>
+                        Exemplo: Algoritmo que precisa testar todas as combinações possíveis, como problemas
+                        combinatórios complexos, algoritmos de força bruta, criptografia e quebra de senhas</p>
+                </div>
+
+                <div class="complexity">
+                    <h3>🌸 O(n!) - Tempo Fatorial</h3>
+                    <p>O tempo de execução cresce de forma fatorial com o tamanho da entrada. Cada novo elemento
+                        multiplica o tempo por um número maior.
+                        <br><br>
+                        Exemplo: Gerar todas as permutações possíveis de uma lista, alguns algoritmos de inteligência
+                        artifical
+                    </p>
+                </div>
+            </div>
+            <div class="code-examples">
+                <div class="code-block">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgczq_x8g9BOszSWYUdL-tUE3Rf3yIgH3SQVpCFWswhYCWYhEobXYHSUNyDtTabFUwbLGhruFTHLkQHZoPBM1eZ5-vjobTrbjAba9ASYuqPNt_2MyOhGzKX60dvh1dwsYGAjqiMh4Ji4kk6gD8RjAozhj5Vs8AJzSrj6w_qzYiknwezrYJwknHI6rSbpw=w1200-h630-p-k-no-nu"
+                        alt="Descrição da imagem">
+
+                </div>
+
+            </div>
+        </section>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>🌸 Luana Santini: Sistemas de Informação - Estácio Florianópolis - Matrícula 202308416251🌸</p>
+    </footer>
+</body>
+
+</html>
